@@ -41,8 +41,8 @@ print('Чтобы я мог давать тебе точные и полезны
       'мне нужно больше узнать о тебе.')
 
 
-# Запрашиваем вес
-def request_user_weight():
+def request_user_weight():  # Запрашиваем вес
+    """Запрашиваем вес"""
     while True:
         try:
             user_input = input('Введите вес (кг): ').replace(',', '.')
@@ -57,8 +57,8 @@ def request_user_weight():
                   '(например, 75.5 или 80).')
 
 
-# Запрашиваем рост
-def request_user_height():
+def request_user_height():  # Запрашиваем рост
+    """Запрашиваем рост"""
     while True:
         try:
             user_input = input('Какой у тебя рост? Укажи в метрах'
@@ -77,13 +77,22 @@ user_weight = request_user_weight()
 user_height = request_user_height()
 
 
-# Расчет ИМТ
-def calculate_bmi(user_weight, user_height):
+def calculate_bmi(user_weight, user_height):  # Расчет ИМТ
+    """Рассчитывает индекс массы тела (ИМТ) по весу и росту.
+
+    Args:
+        user_weight (float): вес в килограммах.
+        user_height (float): рост в метрах.
+
+    Returns:
+        float: значение ИМТ.
+    """
     return round(user_weight / (user_height ** 2), 1)
 
 
 # По найденному ИМТ, получаем категорию и совет от ВОЗ
 def get_bmi_category(bmi):
+    """По найденному ИМТ, получаем категорию и совет от ВОЗ"""
     if bmi < 16:
         return (
             'Выраженный дефицит массы тела (истощение)',
@@ -118,7 +127,7 @@ water_l = water_ml / WATER_PER_L  # Перевод в литры
 
 # Шаг 5: Выводим итоговый расчет
 print('-' * LINE_LENGTH)
-print(f'Отчет для пользователя: {user_name} ({user_age} {ending})')
+print(f'Отчет для пользователя: {clean_name} ({user_age} {ending})')
 
 bmi = calculate_bmi(user_weight, user_height)
 category, recommendation = get_bmi_category(bmi)
